@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,500,700');
+
+$mainFont: 'Quicksand';
+$fontLight: 300;
+$fontNormal: 500;
+$fontBold: 700;
+$fontS: 0.8rem;
+$fontM: 1rem;
+$fontL: 1.4rem;
+$fontXL: 2rem;
+$fontXXL: 4rem;
+$defaultCursor: pointer;
+$buttonIconColor: #c44536;
+
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  font-family: $mainFont;
+  font-weight: $fontNormal;
+  min-height: 100vh;
+  background: url(../img/trianglify.svg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .game {
+    width: 60rem;
+    height: 40rem;
+    box-shadow: 0 9px 10px rgb(138, 96, 71);
+    border-radius: 10px;
+    &__start {
+      margin: 3rem 0 2rem 0;
+      display: flex;
+      justify-content: center;
+    }
+    &__players {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+    &__play {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    &__options {
+      margin-top: 2rem;
+      margin-bottom: 8rem;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  }
+  .btn {
+    background: none;
+    border: none;
+    font-family: $mainFont;
+    text-transform: uppercase;
+    font-size: $fontL;
+    cursor: $defaultCursor;
+    transition: transform 200ms linear;
+    i {
+      margin-right: 0.6rem;
+      color: $buttonIconColor;
+    }
+    &:hover {
+      transform: scale(1.07);
+    }
+  }
+  .player {
+    display: flex;
+    &__name {
+      text-transform: uppercase;
+      font-size: $fontXL;
+      margin-bottom: 0.3rem;
+    }
+    &__active {
+      position: relative;
+    }
+    &__active::after {
+      content: '';
+      width: 0.7rem;
+      height: 0.7rem;
+      background-color: $buttonIconColor;
+      position: absolute;
+      border-radius: 50%;
+      margin-left: 1rem;
+      top: 63%;
+    }
+  }
+  .dices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &__img {
+      max-width: 40%;
+      box-shadow: 0 0 7px rgb(231, 231, 231);
+      margin-bottom: 1rem;
+    }
+  }
+
+  .score {
+    margin-top: 0.3rem;
+    margin-bottom: 0;
+    font-size: $fontXXL;
+    color: $buttonIconColor;
+    align-self: baseline;
+    &:first-child {
+      margin-left: 9rem;
+    }
+    &:last-child {
+      margin-right: 9rem;
+    }
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .space--between {
+    margin-bottom: 1rem;
+  }
+
+  .result {
+    background-color: $buttonIconColor;
+    padding: 0 1.5rem;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgb(163, 163, 163);
+    transition: transform 200ms linear;
+    &:hover {
+      transform: scale(1.08);
+    }
+    &:first-child {
+      margin-left: 5rem;
+    }
+    &:last-child {
+      margin-right: 4rem;
+    }
+    &__header {
+      font-size: $fontS;
+      font-weight: $fontLight;
+      letter-spacing: 2px;
+      p {
+        margin: 0.5rem;
+      }
+    }
+    &__text {
+      font-size: $fontXL;
+      margin: 0.5rem;
+      font-weight: $fontBold;
+    }
+  }
+}
+
+.light--text {
+  font-weight: $fontLight;
+}
+
+.img--hidden {
+  visibility: hidden;
+}
+
+.img--visible {
+  visibility: visible;
+}
+
+.background--left {
+  background: linear-gradient(to right, #e1eeec 50%, #ffff 50%);
+}
+
+.background--right {
+  background: linear-gradient(to left, #e1eeec 50%, #ffff 50%);
+}

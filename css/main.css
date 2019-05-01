@@ -1,0 +1,260 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,500,700");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  font-family: "Quicksand";
+  font-weight: 500;
+  min-height: 100vh;
+  background: url(../img/trianglify.svg);
+  background-size: cover;
+  background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .game {
+  width: 60rem;
+  height: 40rem;
+  -webkit-box-shadow: 0 9px 10px #8a6047;
+          box-shadow: 0 9px 10px #8a6047;
+  border-radius: 10px;
+}
+
+main .game__start {
+  margin: 3rem 0 2rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .game__players {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+main .game__play {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .game__options {
+  margin-top: 2rem;
+  margin-bottom: 8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .btn {
+  background: none;
+  border: none;
+  font-family: "Quicksand";
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 200ms linear;
+  transition: -webkit-transform 200ms linear;
+  transition: transform 200ms linear;
+  transition: transform 200ms linear, -webkit-transform 200ms linear;
+}
+
+main .btn i {
+  margin-right: 0.6rem;
+  color: #c44536;
+}
+
+main .btn:hover {
+  -webkit-transform: scale(1.07);
+          transform: scale(1.07);
+}
+
+main .player {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .player__name {
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+}
+
+main .player__active {
+  position: relative;
+}
+
+main .player__active::after {
+  content: '';
+  width: 0.7rem;
+  height: 0.7rem;
+  background-color: #c44536;
+  position: absolute;
+  border-radius: 50%;
+  margin-left: 1rem;
+  top: 63%;
+}
+
+main .dices {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .dices__img {
+  max-width: 40%;
+  -webkit-box-shadow: 0 0 7px #e7e7e7;
+          box-shadow: 0 0 7px #e7e7e7;
+  margin-bottom: 1rem;
+}
+
+main .score {
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+  font-size: 4rem;
+  color: #c44536;
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+}
+
+main .score:first-child {
+  margin-left: 9rem;
+}
+
+main .score:last-child {
+  margin-right: 9rem;
+}
+
+main .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main .space--between {
+  margin-bottom: 1rem;
+}
+
+main .result {
+  background-color: #c44536;
+  padding: 0 1.5rem;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 10px 10px #a3a3a3;
+          box-shadow: 0 10px 10px #a3a3a3;
+  -webkit-transition: -webkit-transform 200ms linear;
+  transition: -webkit-transform 200ms linear;
+  transition: transform 200ms linear;
+  transition: transform 200ms linear, -webkit-transform 200ms linear;
+}
+
+main .result:hover {
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+}
+
+main .result:first-child {
+  margin-left: 5rem;
+}
+
+main .result:last-child {
+  margin-right: 4rem;
+}
+
+main .result__header {
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+main .result__header p {
+  margin: 0.5rem;
+}
+
+main .result__text {
+  font-size: 2rem;
+  margin: 0.5rem;
+  font-weight: 700;
+}
+
+.light--text {
+  font-weight: 300;
+}
+
+.img--hidden {
+  visibility: hidden;
+}
+
+.img--visible {
+  visibility: visible;
+}
+
+.background--left {
+  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #e1eeec), color-stop(50%, #ffff));
+  background: linear-gradient(to right, #e1eeec 50%, #ffff 50%);
+}
+
+.background--right {
+  background: -webkit-gradient(linear, right top, left top, color-stop(50%, #e1eeec), color-stop(50%, #ffff));
+  background: linear-gradient(to left, #e1eeec 50%, #ffff 50%);
+}
