@@ -25,20 +25,94 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+}
+
+main .modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: -webkit-transform 200ms linear;
+  transition: -webkit-transform 200ms linear;
+  transition: transform 200ms linear;
+  transition: transform 200ms linear, -webkit-transform 200ms linear;
+}
+
+main .modal__msg {
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+main .modal__btn {
+  font-family: "Quicksand", sans-serif;
+  border: none;
+  padding: 0.8rem 3rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  background-color: #c44536;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+main .modal__box {
+  width: 30rem;
+  height: 25rem;
+  background-color: white;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .modal__box > * {
+  margin: 1rem 4rem;
+}
+
+main .modal__box i {
+  font-size: 2rem;
+  color: #c44536;
 }
 
 main .game {
   width: 60rem;
-  height: 40rem;
   -webkit-box-shadow: 0 9px 10px #8a6047;
           box-shadow: 0 9px 10px #8a6047;
+  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #e1eeec), color-stop(50%, #ffff));
+  background: linear-gradient(to right, #e1eeec 50%, #ffff 50%);
   border-radius: 10px;
+  position: absolute;
 }
 
 main .game__start {
@@ -153,6 +227,7 @@ main .dices {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  height: 19rem;
 }
 
 main .dices__img {
@@ -245,16 +320,12 @@ main .result__text {
   visibility: hidden;
 }
 
-.img--visible {
-  visibility: visible;
-}
-
-.background--left {
-  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #e1eeec), color-stop(50%, #ffff));
-  background: linear-gradient(to right, #e1eeec 50%, #ffff 50%);
-}
-
 .background--right {
-  background: -webkit-gradient(linear, right top, left top, color-stop(50%, #e1eeec), color-stop(50%, #ffff));
-  background: linear-gradient(to left, #e1eeec 50%, #ffff 50%);
+  background: -webkit-gradient(linear, right top, left top, color-stop(50%, #e1eeec), color-stop(50%, #ffff)) !important;
+  background: linear-gradient(to left, #e1eeec 50%, #ffff 50%) !important;
+}
+
+.show--modal {
+  -webkit-transform: translateY(0) !important;
+          transform: translateY(0) !important;
 }

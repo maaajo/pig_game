@@ -1,16 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:300,500,700');
 
-$mainFont: 'Quicksand';
-$fontLight: 300;
-$fontNormal: 500;
-$fontBold: 700;
-$fontS: 0.8rem;
-$fontM: 1rem;
-$fontL: 1.4rem;
-$fontXL: 2rem;
-$fontXXL: 4rem;
-$defaultCursor: pointer;
-$buttonIconColor: #c44536;
+@import 'variables';
+@import 'mixins';
 
 * {
   box-sizing: border-box;
@@ -33,14 +24,48 @@ main {
   background: url(../img/trianglify.svg);
   background-size: cover;
   background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexCenterRow();
+  overflow: hidden;
+  .modal {
+    @include modal(0.8);
+    transform: translateY(100%);
+    transition: transform 200ms linear;
+    &__msg {
+      text-align: center;
+      font-size: $fontL;
+    }
+    &__btn {
+      font-family: $mainFont, sans-serif;
+      border: none;
+      padding: 0.8rem 3rem;
+      text-transform: uppercase;
+      font-size: $fontM;
+      background-color: $buttonIconColor;
+      color: white;
+      border-radius: 0.5rem;
+      cursor: $defaultCursor;
+    }
+    &__box {
+      width: 30rem;
+      height: 25rem;
+      background-color: white;
+      border-radius: 1rem;
+      @include flexCenterColumn();
+      > * {
+        margin: 1rem 4rem;
+      }
+      i {
+        font-size: $fontXL;
+        color: $buttonIconColor;
+      }
+    }
+  }
   .game {
     width: 60rem;
-    height: 40rem;
     box-shadow: 0 9px 10px rgb(138, 96, 71);
+    background: linear-gradient(to right, #e1eeec 50%, #ffff 50%);
     border-radius: 10px;
+    position: absolute;
     &__start {
       margin: 3rem 0 2rem 0;
       display: flex;
@@ -102,10 +127,8 @@ main {
     }
   }
   .dices {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include flexCenterColumn();
+    height: 19rem;
     &__img {
       max-width: 40%;
       box-shadow: 0 0 7px rgb(231, 231, 231);
@@ -177,14 +200,10 @@ main {
   visibility: hidden;
 }
 
-.img--visible {
-  visibility: visible;
-}
-
-.background--left {
-  background: linear-gradient(to right, #e1eeec 50%, #ffff 50%);
-}
-
 .background--right {
-  background: linear-gradient(to left, #e1eeec 50%, #ffff 50%);
+  background: linear-gradient(to left, #e1eeec 50%, #ffff 50%) !important;
+}
+
+.show--modal {
+  transform: translateY(0) !important;
 }

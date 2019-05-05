@@ -15,7 +15,14 @@
   </head>
   <body>
     <main>
-      <div class="game background--left">
+      <div class="modal">
+        <div class="modal__box">
+          <i class="fas fa-exclamation-circle"></i>
+          <p class="modal__msg"></p>
+          <button class="modal__btn">close</button>
+        </div>
+      </div>
+      <div class="game">
         <div class="game__start">
           <button class="btn">
             <i class="fas fa-plus-circle"></i>new game
@@ -40,7 +47,7 @@
         </div>
         <div class="game__options">
           <div class="result">
-            <header class="result__header"><p>current</p></header>
+            <header class="result__header"><p>round score</p></header>
             <p class="result__text">0</p>
           </div>
           <div class="buttons">
@@ -50,7 +57,7 @@
             <button class="btn"><i class="fas fa-allergies"></i>hold</button>
           </div>
           <div class="result">
-            <header class="result__header"><p>current</p></header>
+            <header class="result__header"><p>round score</p></header>
             <p class="result__text">0</p>
           </div>
         </div>
