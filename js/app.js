@@ -13,6 +13,7 @@ GAME RULES:
 
 class Game {
   constructor() {
+    this._gameState = 'active';
     this._game = document.querySelector('.game');
     this._dicesImg = document.querySelector('.dices');
     this._currentScore = document.querySelectorAll('.result');
@@ -23,10 +24,6 @@ class Game {
     this._newGameButton = document.querySelector('.game__start > .btn');
     this._activePlayer = 0;
     this._endGameMark = 100;
-    this._badDiceMessage =
-      'There is a dice with total number of one in your draw dice. Next player will attempt now...';
-    this._successMessage = `Congratulations Player: ${this._activePlayer +
-      1}, you won!`;
     this._activePlayerMark = this._player[this._activePlayer].querySelector(
       '.player__active'
     );
@@ -38,6 +35,20 @@ class Game {
       'dice-5.png': 5,
       'dice-6.png': 6
     };
+  }
+
+  _getSuccessMessage() {
+    return `Congratulations Player: ${this._activePlayer + 1}, you won!`;
+  }
+
+  _getBadDiceMessage() {
+    return 'There is a dice with total number of one in your draw dice. Next player will attempt now...';
+  }
+
+  _changeGameState() {
+    this._gameState === 'active'
+      ? (this._gameState = 'notactive')
+      : (this._gameState = 'active');
   }
 
   _getRandom(rangeStart, rangeEnd) {
@@ -186,6 +197,7 @@ class Game {
   _renderModal(msg) {
     this._changeModalMessage(msg);
     this._addCloseEventToModal();
+    this._changeGameState();
     this._showModal();
   }
 
@@ -203,6 +215,7 @@ class Game {
 
   _showModal() {
     const modal = document.querySelector('.modal');
+    this._changeGameState();
     modal.classList.add('show--modal');
   }
 
@@ -222,43 +235,47 @@ class Game {
   }
 
   rollDice() {
-    if (this._addDices()) {
+    if (this._addDices() && this._gameState === 'active') {
       this.showDices();
       this.updateCurrentResultActivePlayer();
     } else {
-      this._renderModal(this._badDiceMessage);
+      this._renderModal(this._getBadDiceMessage());
     }
   }
 
   nextPlayer(diceFault) {
-    const lastKnownCurrentResult = this.clearCurrentResultOfLastPlayer();
-    let score = 0;
-    if (diceFault) {
-      this.updateVisualsOnPlayerSwitch();
-      return;
-    } else {
-      score = this.updateOverallResults(lastKnownCurrentResult);
-      if (score >= this._endGameMark) {
-        this._renderModal(this._successMessage);
-        this.newGame();
+    if (this._gameState === 'active') {
+      const lastKnownCurrentResult = this.clearCurrentResultOfLastPlayer();
+      let score = 0;
+      if (diceFault) {
+        this.updateVisualsOnPlayerSwitch();
         return;
       } else {
-        this.updateVisualsOnPlayerSwitch();
+        score = this.updateOverallResults(lastKnownCurrentResult);
+        if (score >= this._endGameMark) {
+          this._renderModal(this._getSuccessMessage());
+          this.newGame();
+          return;
+        } else {
+          this.updateVisualsOnPlayerSwitch();
+        }
       }
     }
   }
 
   newGame() {
-    const lastActivePlayer = this._activePlayer;
-    this._activePlayer = 0;
-    this.resetBackground();
-    this.removeActivePlayerMark(lastActivePlayer);
-    this.addActivePlayerMark(0);
-    this.setBoldFontActivePlayer(this._activePlayer);
-    this.setLightFontLastPlayer(lastActivePlayer);
-    this.clearOverallScores();
-    this.clearCurrentScores();
-    this.hideDices();
+    if (this._gameState === 'active') {
+      const lastActivePlayer = this._activePlayer;
+      this._activePlayer = 0;
+      this.resetBackground();
+      this.removeActivePlayerMark(lastActivePlayer);
+      this.addActivePlayerMark(0);
+      this.setBoldFontActivePlayer(this._activePlayer);
+      this.setLightFontLastPlayer(lastActivePlayer);
+      this.clearOverallScores();
+      this.clearCurrentScores();
+      this.hideDices();
+    }
   }
 
   attachMainEvents() {
